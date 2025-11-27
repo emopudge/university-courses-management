@@ -7,16 +7,15 @@ class Program
     static void Main(string[] args)
     {
 
-        // Используем конструктор - создаем преподавателя
+        // создаем преподавателя с помощью конструктора
         var teacher = new Teacher("T001", "Иванов Иван Иванович", "IT");
 
-        // Теперь можно работать с данными:
         Console.WriteLine("TEACHER:");
-        Console.WriteLine(teacher.Id);    // Выведет "T001"
-        Console.WriteLine(teacher.Name);  // Выведет "Иванов Иван Иванович"
+        Console.WriteLine(teacher.Id);   
+        Console.WriteLine(teacher.Name); 
         Console.WriteLine(teacher.Specialization);
 
-        // Можно изменить имя:
+        // меняем имя
         teacher.Name = "Петров Петр Петрович";
         Console.WriteLine($"Новое имя: {teacher.Name}");
 
@@ -35,7 +34,7 @@ class Program
         var offlineCourse = new OfflineCourse("C001", "IT", 4342, "8:00 - 9:00");
         Console.WriteLine(offlineCourse.Schedule);
 
-        // CourseService
+        // управление курсами
         Console.WriteLine("");
         Console.WriteLine("COURSE SERVICE");
         var courseService = new CourseService();
