@@ -1,13 +1,13 @@
-using System.Collections.Generic; // для List<Course>
+using System.Collections.Generic; // для List<ICourse>
 using System.Linq; // для FirstOrDefault()
 
 public class CourseService
 {
     // приватное хранилище всех курсов - _courses
-    private List<Course> _courses = new List<Course>();
+    private List<ICourse> _courses = new List<ICourse>();
 
     // добавление курсов. void ничего не возвращает
-    public void AddCourse(Course course)
+    public void AddCourse(ICourse course)
     {
         _courses.Add(course);
     }
@@ -46,10 +46,21 @@ public class CourseService
     }
 
     // посмотреть курсы преподавателя. вернется generic список с курсами
-    public List<Course> ViewTeacherCourses(string teacherId)
-    {        
+    public List<ICourse> ViewTeacherCourses(string teacherId)
+    {
         return _courses
         .Where(c => c.Teacher.Id == teacherId)
         .ToList();
+    }
+    
+    // просмотреть список студентов на курсе
+    public List<Student> ViewCourseStudents(string courseId)
+    {
+        var course = _courses.FirstOrDefault(c => c.Id == courseId);
+        if (course == null)
+        {
+            throw new ArgumentException($"курс с id {courseId} не найден");
+        }
+        return course.Students.ToList();
     }
 }

@@ -9,7 +9,7 @@ public class Teacher
 
     // конструктор         
     public Teacher(string id, string name, string specialization)
-    {
+    {        
         Id = id;
         Name = name;
         Specialization = specialization;
